@@ -1,0 +1,17 @@
+Do not try this!
+
+Forkbomb on bash
+
+:(){ :|: &};:
+
+Explanation:
+
+:() --> define a function called :
+
+{ stuff } --> contents of the function :
+
+:|: & --> Run : and feed its output to another : in the background. Essential forking step.
+
+; --> command separator
+
+: --> first execution of :
