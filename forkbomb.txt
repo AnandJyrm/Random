@@ -2,16 +2,27 @@ Do not try this!
 
 Forkbomb on bash
 
-:(){ :|: &};:
+	:(){ :|: &};:
 
 Explanation:
 
-:() --> define a function called :
+:() 		--> define a function called :
 
-{ stuff } --> contents of the function :
+{ stuff } 	--> contents of the function :
 
-:|: & --> Run : and feed its output to another : in the background. Essential forking step.
+:|: & 		--> Run : and feed its output to another : in the background. Essential forking step.
 
-; --> command separator
+; 			--> command separator
 
-: --> first execution of :
+: 			--> first execution of :
+
+
+TO prevent forkbombs, set a hard limit on number of processes/threads that can be created by a non root user.
+
+	sudoedit /etc/security/limits.conf
+
+Add to bottom of this file
+
+	* hard nproc nnn
+
+where nnn is the limit you want to apply, typically around 1000 for a single user system.
